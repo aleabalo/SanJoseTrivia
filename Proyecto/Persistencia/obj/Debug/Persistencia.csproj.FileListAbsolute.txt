@@ -1,0 +1,4 @@
+C:\Users\Mateo\Desktop\Proyecto Final Segundo Año\Persistencia\bin\Debug\Persistencia.dll
+C:\Users\Mateo\Desktop\Proyecto Final Segundo Año\Persistencia\bin\Debug\Persistencia.pdb
+C:\Users\Mateo\Desktop\Proyecto Final Segundo Año\Persistencia\obj\Debug\Persistencia.dll
+C:\Users\Mateo\Desktop\Proyecto Final Segundo Año\Persistencia\obj\Debug\Persistencia.pdb

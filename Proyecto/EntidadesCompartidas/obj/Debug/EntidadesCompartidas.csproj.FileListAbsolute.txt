@@ -1,0 +1,4 @@
+C:\Users\Mateo\Desktop\Proyecto Final Segundo Año\EntidadesCompartidas\bin\Debug\EntidadesCompartidas.dll
+C:\Users\Mateo\Desktop\Proyecto Final Segundo Año\EntidadesCompartidas\bin\Debug\EntidadesCompartidas.pdb
+C:\Users\Mateo\Desktop\Proyecto Final Segundo Año\EntidadesCompartidas\obj\Debug\EntidadesCompartidas.dll
+C:\Users\Mateo\Desktop\Proyecto Final Segundo Año\EntidadesCompartidas\obj\Debug\EntidadesCompartidas.pdb

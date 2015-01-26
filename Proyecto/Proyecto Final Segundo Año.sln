@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistencia", "Persistencia\Persistencia.csproj", "{36D3776F-1165-4E1B-A61F-587B95BD7031}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntidadesCompartidas", "EntidadesCompartidas\EntidadesCompartidas.csproj", "{3634C492-3285-49EF-9E34-85B6DDEAE8FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36D3776F-1165-4E1B-A61F-587B95BD7031}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36D3776F-1165-4E1B-A61F-587B95BD7031}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36D3776F-1165-4E1B-A61F-587B95BD7031}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36D3776F-1165-4E1B-A61F-587B95BD7031}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3634C492-3285-49EF-9E34-85B6DDEAE8FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3634C492-3285-49EF-9E34-85B6DDEAE8FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3634C492-3285-49EF-9E34-85B6DDEAE8FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3634C492-3285-49EF-9E34-85B6DDEAE8FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
