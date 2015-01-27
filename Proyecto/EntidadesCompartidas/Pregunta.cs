@@ -13,7 +13,9 @@ namespace EntidadesCompartidas
         private int _idPregunta;
         private string _textoPregunta;
         private string _tipo;
-        private Respuesta _resp;
+        private List<Respuesta> _respuestas;
+
+
 
         //atributos
         public int IdPregunta  
@@ -34,19 +36,20 @@ namespace EntidadesCompartidas
             set { _tipo = value; }
         }
 
-        public Respuesta Resp
+        public List<Respuesta> Respuestas
         {
-            get { return _resp; }
-            set { _resp = value; }
+            get { return _respuestas; }
+            set { _respuestas = value; }
         }
+ 
 
         //constructor
-        public Pregunta(int oPregunta, string oTextoPregunta, string oTipo, Respuesta oResp)
+        public Pregunta(int oPregunta, string oTextoPregunta, string oTipo, List<Respuesta> oResp)
         {
             IdPregunta = oPregunta;
             TextoPregunta = oTextoPregunta;
             Tipo = oTipo;
-            Resp = oResp;
+            Respuestas = oResp;
         }
 
         public Pregunta()
