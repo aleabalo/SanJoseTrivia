@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{36D3776F-1165-4E1B-A61F-587B95BD7031}</ProjectGuid>
+    <ProjectGuid>{2B57FE83-E15B-47EB-A7D4-69676B3468CB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Persistencia</RootNamespace>
-    <AssemblyName>Persistencia</AssemblyName>
+    <RootNamespace>Logica</RootNamespace>
+    <AssemblyName>Logica</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,26 +40,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Conexion.cs" />
-    <Compile Include="FabricaPersistencia.cs" />
-    <Compile Include="IPersistenciaAdministrador.cs" />
-    <Compile Include="IPersistenciaJuego.cs" />
-    <Compile Include="IPersistenciaJugador.cs" />
-    <Compile Include="IPersistenciaPregunta.cs" />
-    <Compile Include="IPersistenciaRespuesta.cs" />
-    <Compile Include="IPersistenciaUsuario.cs" />
-    <Compile Include="PersistenciaAdministrador.cs" />
-    <Compile Include="PersistenciaJuego.cs" />
-    <Compile Include="PersistenciaJugador.cs" />
-    <Compile Include="PersistenciaPregunta.cs" />
-    <Compile Include="PersistenciaRespuesta.cs" />
-    <Compile Include="PersistenciaUsuario.cs" />
+    <Compile Include="FabricaLogica.cs" />
+    <Compile Include="ILogicaAdministrador.cs" />
+    <Compile Include="ILogicaJuego.cs" />
+    <Compile Include="ILogicaJugador.cs" />
+    <Compile Include="ILogicaPregunta.cs" />
+    <Compile Include="ILogicaRespuesta.cs" />
+    <Compile Include="ILogicaUsuario.cs" />
+    <Compile Include="LogicaAdministrador.cs" />
+    <Compile Include="LogicaJuego.cs" />
+    <Compile Include="LogicaJugador.cs" />
+    <Compile Include="LogicaPregunta.cs" />
+    <Compile Include="LogicaRespuesta.cs" />
+    <Compile Include="LogicaUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EntidadesCompartidas\EntidadesCompartidas.csproj">
       <Project>{3634C492-3285-49EF-9E34-85B6DDEAE8FF}</Project>
       <Name>EntidadesCompartidas</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Persistencia\Persistencia.csproj">
+      <Project>{36D3776F-1165-4E1B-A61F-587B95BD7031}</Project>
+      <Name>Persistencia</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
