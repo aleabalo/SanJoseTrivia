@@ -14,10 +14,8 @@ namespace EntidadesCompartidas
         private int _tiradas;
         private DateTime _fechaInicio;
         private DateTime _fechaFin;
-        private Jugador _jugador;
-        private List<Pregunta> _preguntas;
-
-
+        private List<Jugador> _lista;
+        private Pregunta _preg;
 
 
         //propiedades
@@ -45,29 +43,27 @@ namespace EntidadesCompartidas
             set { _fechaFin = value; }
         }
 
-        public Jugador Jugador
+        public List<Jugador> Lista
         {
-            get { return _jugador; }
-            set { _jugador = value; }
+            get { return _lista; }
+            set { _lista = value; }
         }
 
-        public List<Pregunta> Preguntas
+        public Pregunta Preg
         {
-            get { return _preguntas; }
-            set { _preguntas = value; }
+            get { return _preg; }
+            set { _preg = value; }
         }
-
-
 
         //constructor
-        public Juego(int oIdJuego, int oTiradas, DateTime oFechaInicio, DateTime oFechaFin, Jugador oJugador, List<Pregunta> oPreguntas)
+        public Juego(int oIdJuego, int oTiradas, DateTime oFechaInicio, DateTime oFechaFin, List<Jugador> oLista, Pregunta oPreg)
         {
             Id = oIdJuego;
             Tiradas = oTiradas;
             FechaInicio = oFechaInicio;
             FechaFin = oFechaFin;
-            Jugador = oJugador;
-            Preguntas = oPreguntas;
+            Lista = oLista;
+            Preg = oPreg;
         }
 
         public Juego()
