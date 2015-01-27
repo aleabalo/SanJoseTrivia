@@ -7,7 +7,7 @@ namespace EntidadesCompartidas
 {
     [Serializable]
 
-    class Usuario
+   public class Usuario
     {
         //atributos
         private string _cedula;

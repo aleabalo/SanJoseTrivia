@@ -5,3 +5,6 @@ C:\Users\Mateo\Desktop\Proyecto Final Segundo Año\Persistencia\obj\Debug\Persis
 C:\Users\Mateo\Desktop\Proyecto Final Segundo Año\Persistencia\obj\Debug\Persistencia.csprojResolveAssemblyReference.cache
 C:\Users\Mateo\Desktop\Proyecto Final Segundo Año\Persistencia\bin\Debug\EntidadesCompartidas.dll
 C:\Users\Mateo\Desktop\Proyecto Final Segundo Año\Persistencia\bin\Debug\EntidadesCompartidas.pdb
+C:\Users\ale\Desktop\SanJoseTrivia\Proyecto\Persistencia\obj\Debug\Persistencia.csprojResolveAssemblyReference.cache
+C:\Users\ale\Desktop\SanJoseTrivia\Proyecto\Persistencia\obj\Debug\Persistencia.dll
+C:\Users\ale\Desktop\SanJoseTrivia\Proyecto\Persistencia\obj\Debug\Persistencia.pdb

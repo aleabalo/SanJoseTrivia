@@ -22,7 +22,7 @@ CREATE TABLE Usuario
 (
 	Usuario varchar(25) not null unique,
 	Cedula  varchar (9)not null,
-	Contraseña varchar(25) not null check (LEN(Contraseña)=7),
+	Contraseña varchar(25) not null,
 	NombreCompleto varchar(120) not null,
 	primary key(Cedula)
 )
@@ -114,31 +114,34 @@ Create Procedure AltaAdmin
 @VerEstadisticas bit
 AS
 begin
-if exists(select * from Usuario where Usuario.Usuario=@Usuario)
+	if exists(select * from Usuario where Usuario.Usuario=@Usuario)
 begin
-return -1
+	return -1
 end
 
-if exists(select * from Usuario where Usuario.Cedula=@Cedula)
+	if exists(select * from Usuario where Usuario.Cedula=@Cedula)
 begin
-return -2
+	return -2
 end
 
 begin tran
-Insert into Usuario(Usuario,Cedula,Contraseña,nombreCompleto) values (@Usuario, @Cedula, @Contraseña, @NombreCompleto)
-Insert into Administrador(Cedula,VerEstadisticas) values (@Cedula, @VerEstadisticas)
-
-if(@@ERROR<>0)
-begin
-return -3
-rollback tran
-end
-
-else
-begin
-commit tran
-return 1
-end
+	Insert into Usuario(Usuario,Cedula,Contraseña,nombreCompleto) values (@Usuario, @Cedula, @Contraseña, @NombreCompleto)
+	if(@@ERROR<>0)
+	begin
+		return -3
+		rollback tran
+	end
+	Insert into Administrador(Cedula,VerEstadistica) values (@Cedula, @VerEstadisticas)
+	if(@@ERROR<>0)
+		begin
+			return -3
+			rollback tran
+		end
+	else
+		begin
+		commit tran
+		return 0
+	end
 end
 
 go
@@ -154,19 +157,22 @@ end
 
 begin tran
 delete from Administrador where Administrador.Cedula=@Cedula
+	if(@@ERROR<>0)
+		begin
+			rollback tran
+			return -2
+		end
 delete from Usuario where Usuario.Cedula=@Cedula
-
-if(@@ERROR<>0)
-begin
-rollback tran
-return -2
-end
-
-else
-begin
-commit tran
-return 1
-end
+	if(@@ERROR<>0)
+		begin
+			rollback tran
+			return -2
+		end
+	else
+		begin
+			commit tran
+		return 0
+	end
 end
 go
 
@@ -194,7 +200,12 @@ end
 
 begin tran
 Update Usuario set Usuario=@Usuario,Cedula=@Cedula,Contraseña=@Contraseña,nombreCompleto=@NombreCompleto where Usuario.Cedula=@Cedula
-Update Administrador set Cedula=@Cedula,VerEstadisticas=@VerEstadisticas where Administrador.Cedula=@Cedula 
+if(@@ERROR<>0)
+	begin
+		return -2
+		rollback tran
+	end
+Update Administrador set Cedula=@Cedula,VerEstadistica=@VerEstadisticas where Administrador.Cedula=@Cedula 
 
 if(@@ERROR<>0)
 begin
@@ -239,19 +250,23 @@ end
 
 begin tran
 Insert into Usuario(Usuario,Cedula,Contraseña,nombreCompleto) values (@Usuario, @Cedula, @Contraseña, @NombreCompleto)
+	if(@@ERROR<>0)
+	begin
+		return -2
+		rollback tran
+	end
 Insert into Jugador(Cedula,NombrePublico) values (@Cedula, @NombrePublico)
-
-if(@@ERROR<>0)
-begin
-return -3
-rollback tran
-end
+	if(@@ERROR<>0)
+	begin
+		return -2
+		rollback tran
+	end
 
 else
-begin
-commit tran
-return 1
-end
+	begin
+		commit tran
+		return 0
+	end
 end
 
 go
@@ -280,14 +295,14 @@ create procedure BajaPregunta
 AS
 begin
 
-if not exists (select * from Pregunta where IdPregunta=@IdPregunta)
+if not exists (select * from Pregunta where id=@IdPregunta)
 begin
 return -1
 end
 
 begin tran
-delete from PreguntaRespuesta where IdPregunta=@IdPregunta
-delete from Pregunta where IdPregunta=@IdPregunta
+delete from PreguntaRespuesta where idPregutnta=@IdPregunta
+delete from Pregunta where id=@IdPregunta
 
 if (@@ERROR<>0)
 begin
@@ -307,7 +322,7 @@ create procedure BuscarPregunta
 @IdPregunta int
 AS
 begin
-select * from Pregunta where IdPregunta=@IdPregunta
+select * from Pregunta where id=@IdPregunta
 end
 
 go
@@ -318,7 +333,7 @@ create procedure ModificarPregunta
 @Texto varchar(120)
 AS
 begin
-Update Pregunta set Tipo=@Tipo, Texto=@Texto where IdPregunta =@IdPregunta
+Update Pregunta set Tipo=@Tipo, Texto=@Texto where id =@IdPregunta
 end
 
 go
@@ -342,7 +357,7 @@ end
 
 begin tran
 Insert into Juego(Tiradas,FechaInicio,FechaFin) values (0,GETDATE(),null)
-Insert into JuegoCliente(Cedula,IdJuego) values (@Cedula,@@IDENTITY)
+Insert into JuegoCliente(Cedula,id) values (@Cedula,@@IDENTITY)
 
 if (@@ERROR<>0)
 begin

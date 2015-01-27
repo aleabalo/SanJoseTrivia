@@ -7,6 +7,27 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntidadesCompartidas", "Ent
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logica", "Logica\Logica.csproj", "{2B57FE83-E15B-47EB-A7D4-69676B3468CB}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "sitioWeb", "sitioWeb\", "{BC2244E2-BE83-4AAB-904C-ADA996D215C0}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/sitioWeb"
+		Debug.AspNetCompiler.PhysicalPath = "sitioWeb\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\sitioWeb\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/sitioWeb"
+		Release.AspNetCompiler.PhysicalPath = "sitioWeb\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\sitioWeb\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "10965"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +46,10 @@ Global
 		{2B57FE83-E15B-47EB-A7D4-69676B3468CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B57FE83-E15B-47EB-A7D4-69676B3468CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B57FE83-E15B-47EB-A7D4-69676B3468CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC2244E2-BE83-4AAB-904C-ADA996D215C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC2244E2-BE83-4AAB-904C-ADA996D215C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC2244E2-BE83-4AAB-904C-ADA996D215C0}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC2244E2-BE83-4AAB-904C-ADA996D215C0}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

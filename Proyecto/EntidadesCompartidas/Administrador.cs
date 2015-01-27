@@ -7,7 +7,7 @@ namespace EntidadesCompartidas
 {
     [Serializable]
 
-    class Administrador : Usuario
+    public class Administrador : Usuario
     {
         //atributos
         private bool _estadistica;

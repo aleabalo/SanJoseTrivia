@@ -7,3 +7,6 @@ C:\Users\Mateo\Desktop\Proyecto Final Segundo Año\Logica\bin\Debug\Persistencia
 C:\Users\Mateo\Desktop\Proyecto Final Segundo Año\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
 C:\Users\Mateo\Desktop\Proyecto Final Segundo Año\Logica\obj\Debug\Logica.dll
 C:\Users\Mateo\Desktop\Proyecto Final Segundo Año\Logica\obj\Debug\Logica.pdb
+C:\Users\ale\Desktop\SanJoseTrivia\Proyecto\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+C:\Users\ale\Desktop\SanJoseTrivia\Proyecto\Logica\obj\Debug\Logica.dll
+C:\Users\ale\Desktop\SanJoseTrivia\Proyecto\Logica\obj\Debug\Logica.pdb
