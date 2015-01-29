@@ -7,9 +7,10 @@ namespace EntidadesCompartidas
 {
     [Serializable]
 
-    class Respuesta
+    public class Respuesta
     {
         //atributos
+        private int _id;
         private string _textoRespuesta;
         private bool _correcta;
 
@@ -26,9 +27,16 @@ namespace EntidadesCompartidas
             set { _correcta = value; }
         }
 
-        //constructor
-        public Respuesta(string oTextoRespuesta, bool oCorrecta)
+        public int Id
         {
+            get { return _id; }
+            set { _id = value; }
+        }
+
+        //constructor
+        public Respuesta(int oId, string oTextoRespuesta, bool oCorrecta)
+        {
+            Id = oId;
             TextoRespuesta = oTextoRespuesta;
             Correcta = oCorrecta;
         }

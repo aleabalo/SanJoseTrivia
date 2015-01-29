@@ -40,7 +40,7 @@ go
 CREATE TABLE Jugador
 (
 	Cedula varchar (9) not null,
-	NombrePublico varchar(120) not null,
+	NombrePublico varchar(120) unique not null,
 	foreign key(Cedula) references Usuario(Cedula),
 	primary key(Cedula)
 )
@@ -77,6 +77,7 @@ CREATE TABLE JuegoPregunta
 (
 	IdJuego int Foreign Key References Juego(IdJuego),
 	IdPregunta int Foreign Key References Pregunta(idPregunta),
+	contestadaCorrecta bit,
 	Primary Key(IdJuego,IdPregunta)
 )
 go
@@ -131,7 +132,7 @@ begin tran
 		return -3
 		rollback tran
 	end
-	Insert into Administrador(Cedula,VerEstadistica) values (@Cedula, @VerEstadisticas)
+	Insert into Administrador(Cedula,VerEstadisticas) values (@Cedula, @VerEstadisticas)
 	if(@@ERROR<>0)
 		begin
 			return -3
@@ -205,7 +206,7 @@ if(@@ERROR<>0)
 		return -2
 		rollback tran
 	end
-Update Administrador set Cedula=@Cedula,VerEstadistica=@VerEstadisticas where Administrador.Cedula=@Cedula 
+Update Administrador set Cedula=@Cedula,VerEstadisticas=@VerEstadisticas where Administrador.Cedula=@Cedula 
 
 if(@@ERROR<>0)
 begin
@@ -295,14 +296,14 @@ create procedure BajaPregunta
 AS
 begin
 
-if not exists (select * from Pregunta where id=@IdPregunta)
+if not exists (select * from Pregunta where IdPregunta=@IdPregunta)
 begin
 return -1
 end
 
 begin tran
-delete from PreguntaRespuesta where idPregutnta=@IdPregunta
-delete from Pregunta where id=@IdPregunta
+delete from PreguntaRespuesta where IdPregunta=@IdPregunta
+delete from Pregunta where IdPregunta=@IdPregunta
 
 if (@@ERROR<>0)
 begin
@@ -322,7 +323,7 @@ create procedure BuscarPregunta
 @IdPregunta int
 AS
 begin
-select * from Pregunta where id=@IdPregunta
+select * from Pregunta where IdPregunta=@IdPregunta
 end
 
 go
@@ -333,7 +334,7 @@ create procedure ModificarPregunta
 @Texto varchar(120)
 AS
 begin
-Update Pregunta set Tipo=@Tipo, Texto=@Texto where id =@IdPregunta
+Update Pregunta set Tipo=@Tipo, Texto=@Texto where IdPregunta =@IdPregunta
 end
 
 go
@@ -357,7 +358,7 @@ end
 
 begin tran
 Insert into Juego(Tiradas,FechaInicio,FechaFin) values (0,GETDATE(),null)
-Insert into JuegoCliente(Cedula,id) values (@Cedula,@@IDENTITY)
+Insert into JuegoCliente(Cedula,IdJuego) values (@Cedula,@@IDENTITY)
 
 if (@@ERROR<>0)
 begin

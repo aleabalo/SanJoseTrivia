@@ -7,7 +7,7 @@ namespace EntidadesCompartidas
 {
     [Serializable]
 
-    class Pregunta
+    public class Pregunta
     {
         //atributos
         private int _idPregunta;
