@@ -7,7 +7,7 @@ namespace EntidadesCompartidas
 {
     [Serializable]
 
-    class Juego
+    public class Juego
     {
         //atributos
         private int _idJuego;

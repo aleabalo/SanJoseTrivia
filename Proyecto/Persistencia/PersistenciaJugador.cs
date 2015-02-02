@@ -64,6 +64,51 @@ namespace Persistencia
             }
           }
 
+        public Jugador LoginJugador(string Usuario, string Contraseña)
+        {
+            string cedula, contraseña, nombreCompleto, usuario, nombrePublico;
+            Jugador j = null;
+
+            SqlConnection _cnn = new SqlConnection(Conexion.MiConexion);
+            SqlCommand _comando = new SqlCommand("LoginJugador", _cnn);
+            _comando.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter oUsuario = new SqlParameter("@Usuario", Usuario);
+            SqlParameter oContraseña = new SqlParameter("@Contraseña", Contraseña);
+            SqlParameter oRetorno = new SqlParameter("@Retorno", SqlDbType.Int);
+
+            _comando.Parameters.Add(oUsuario);
+            _comando.Parameters.Add(oContraseña);
+
+
+            SqlDataReader _oRead;
+
+            try
+            {
+                _cnn.Open();
+                _oRead = _comando.ExecuteReader();
+                if (_oRead.Read())
+                {
+                    cedula = (string)_oRead["Cedula"];
+                    contraseña = (string)_oRead["Contraseña"];
+                    usuario = (string)_oRead["UsuLogueo"];
+                    nombreCompleto = (string)_oRead["NombreCompleto"];
+                    nombrePublico = (string)_oRead["NombrePublico"];
+                    j = new Jugador(cedula, contraseña, usuario, nombreCompleto, nombrePublico);
+                    _oRead.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _cnn.Close();
+            }
+            return j;
+        }
+
 
        
     }

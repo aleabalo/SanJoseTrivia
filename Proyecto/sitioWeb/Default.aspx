@@ -42,7 +42,7 @@
                 <td align="center">
                     <asp:Login ID="Login1" runat="server" BackColor="#EFF3FB" BorderColor="#B5C7DE" 
                         BorderPadding="4" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" 
-                        Font-Size="0.8em" ForeColor="#333333">
+                        Font-Size="0.8em" ForeColor="#333333" onauthenticate="Login1_Authenticate">
                         <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
                         <LoginButtonStyle BackColor="White" BorderColor="#507CD1" BorderStyle="Solid" 
                             BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#284E98" />

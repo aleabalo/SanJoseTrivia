@@ -28,6 +28,28 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "sitioWeb", "sitioWeb\", "{B
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ServicioWeb", "..\..\..\..\Documents\Visual Studio 2010\WebSites\ServicioWeb\", "{FA107450-D60A-4F81-AEF0-AE398C259A0C}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{3634C492-3285-49EF-9E34-85B6DDEAE8FF}|EntidadesCompartidas.dll;{2B57FE83-E15B-47EB-A7D4-69676B3468CB}|Logica.dll;{36D3776F-1165-4E1B-A61F-587B95BD7031}|Persistencia.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/ServicioWeb"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\..\Documents\Visual Studio 2010\WebSites\ServicioWeb\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\ServicioWeb\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/ServicioWeb"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\..\Documents\Visual Studio 2010\WebSites\ServicioWeb\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\ServicioWeb\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "17791"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +72,10 @@ Global
 		{BC2244E2-BE83-4AAB-904C-ADA996D215C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC2244E2-BE83-4AAB-904C-ADA996D215C0}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{BC2244E2-BE83-4AAB-904C-ADA996D215C0}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{FA107450-D60A-4F81-AEF0-AE398C259A0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA107450-D60A-4F81-AEF0-AE398C259A0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA107450-D60A-4F81-AEF0-AE398C259A0C}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA107450-D60A-4F81-AEF0-AE398C259A0C}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

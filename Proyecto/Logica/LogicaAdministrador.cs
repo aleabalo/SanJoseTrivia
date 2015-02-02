@@ -46,7 +46,13 @@ namespace Logica
             IPersistenciaAdministrador FAdmin = FabricaPersistencia.getPersistenciaAdministrador();
             FAdmin.ModificarAdministrador(a);
         }
-            
+
+        public Administrador LoginAdministrador(string Usuario, string Contraseña)
+        {
+            IPersistenciaAdministrador FAdmin = FabricaPersistencia.getPersistenciaAdministrador();
+            Administrador a = FAdmin.LoginAdministrador(Usuario, Contraseña);
+            return a;
+        }
 
     }
 }

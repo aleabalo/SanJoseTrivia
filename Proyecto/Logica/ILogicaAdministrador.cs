@@ -13,5 +13,6 @@ namespace Logica
         void BajaAdministrador(Administrador unAdmin);
         Administrador BuscarAdministrador(string Cedula);
         void ModificarAdministrador(Administrador unAdmin);
+        Administrador LoginAdministrador(string Usuario, string Contraseña);
     }
 }

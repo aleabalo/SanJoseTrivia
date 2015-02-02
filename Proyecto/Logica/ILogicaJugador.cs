@@ -10,5 +10,6 @@ namespace Logica
     public interface ILogicaJugador
     {
         void AgregarJugador(Jugador j);
+        Jugador LoginJugador(string Usuario, string Contraseña);
     }
 }

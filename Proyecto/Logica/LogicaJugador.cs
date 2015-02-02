@@ -27,5 +27,12 @@ namespace Logica
             IPersistenciaJugador FJugador = FabricaPersistencia.getPersistenciaJugador();
             FJugador.AgregarJugador(j);
         }
+
+        public Jugador LoginJugador(string Usuario, string Contraseña)
+        {
+            IPersistenciaJugador FAdmin = FabricaPersistencia.getPersistenciaJugador();
+            Jugador j = FAdmin.LoginJugador(Usuario, Contraseña);
+            return j;
+        }
     }
 }

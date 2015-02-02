@@ -9,6 +9,7 @@ namespace Persistencia
     public interface IPersistenciaJugador
     {
         void AgregarJugador(Jugador unJugador);
+        Jugador LoginJugador(string Usuario, string Contraseña);
 
     }
 }

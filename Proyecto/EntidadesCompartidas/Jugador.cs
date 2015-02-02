@@ -7,7 +7,7 @@ namespace EntidadesCompartidas
 {
     [Serializable]
 
-    class Jugador : Usuario
+    public class Jugador : Usuario
     {
         //atributos
         private string _nombrePublico;
