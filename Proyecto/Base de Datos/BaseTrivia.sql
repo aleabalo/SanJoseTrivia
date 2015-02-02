@@ -49,9 +49,9 @@ go
 CREATE TABLE Juego
 (
 	IdJuego int Primary Key Identity(1,1),
-	Tiradas int,
+	Tiradas int default (0),
 	FechaInicio datetime,
-	FechaFin datetime
+	FechaFin datetime default (null)
 )
 go
 
@@ -59,7 +59,9 @@ CREATE TABLE JuegoCliente
 (
 	Cedula varchar (9) Foreign Key References Jugador(Cedula),
 	IdJuego int Foreign Key References Juego(IdJuego),
+	Terminado bit,
 	Primary Key(Cedula,IdJuego)
+	
 )
 go
 
@@ -67,7 +69,7 @@ CREATE TABLE Pregunta
 (
 	IdPregunta int Identity(1,1),
 	Tipo varchar(25) not null,
-	Texto varchar(120) not null,
+	Texto varchar(200) not null,
 	Primary Key (IdPregunta) 
 	
 )
@@ -82,19 +84,13 @@ CREATE TABLE JuegoPregunta
 )
 go
 
-CREATE TABLE Respuesta
+CREATE TABLE Respuesta	
 (
-	IdRespuesta int Primary Key Identity(1,1),
+	IdPregunta int Foreign Key References Pregunta(idPregunta),
+	IdRespuesta int Check(IdRespuesta > 0 AND IdRespuesta < 4),
 	Texto varchar(70),
 	Correcto bit
-)
-go
-
-Create TABLE PreguntaRespuesta
-(
-	IdPregunta int not null Foreign Key References Pregunta(IdPregunta),
-	IdRespuesta int not null Foreign Key References Respuesta(IdRespuesta),
-	Primary key(IdPregunta,IdRespuesta)
+	Primary Key(IdPregunta,IdRespuesta)
 )
 go
 
