@@ -10,7 +10,7 @@ go
 CREATE DATABASE Trivia
 ON(
 	NAME=Trivia,
-	FILENAME='D:\Trivia.mdf'
+	FILENAME='C:\Trivia.mdf'
 )
 go
 
@@ -89,7 +89,7 @@ CREATE TABLE Respuesta
 	IdPregunta int Foreign Key References Pregunta(idPregunta),
 	IdRespuesta int Check(IdRespuesta > 0 AND IdRespuesta < 4),
 	Texto varchar(70),
-	Correcto bit
+	Correcto bit default (0),
 	Primary Key(IdPregunta,IdRespuesta)
 )
 go
@@ -298,7 +298,7 @@ return -1
 end
 
 begin tran
-delete from PreguntaRespuesta where IdPregunta=@IdPregunta
+delete from Respuesta where IdPregunta=@IdPregunta
 delete from Pregunta where IdPregunta=@IdPregunta
 
 if (@@ERROR<>0)
@@ -336,6 +336,65 @@ end
 go
 
 
+
+
+----------------------------------------
+
+--------------PA. Respuestas-------------
+
+----------------------------------------
+
+
+create procedure AltaRespuesta
+@IdPregunta int,
+@IdRespuesta int,
+@Texto varchar(70),
+@Correcto bit
+AS
+begin
+Insert into Respuesta(IdPregunta, IdRespuesta,Texto,Correcto ) values(@IdPregunta, @IdRespuesta,@Texto,@Correcto)
+end
+
+go
+
+create procedure BajaRespuesta
+@IdPregunta int,
+@IdRespuesta int
+AS
+begin
+
+if not exists (select * from Respuesta where IdPregunta=@IdPregunta and IdRespuesta=@IdRespuesta)
+begin
+return -1
+end
+
+begin tran
+delete from Respuesta where IdPregunta=@IdPregunta and IdRespuesta=@IdRespuesta
+
+if (@@ERROR<>0)
+begin
+rollback tran
+return -2
+end
+
+else
+begin
+commit tran
+return 1
+end
+end
+go
+
+create procedure BuscarRespuesta
+@IdPregunta int,
+@IdRespuesta int
+AS
+begin
+select * from Respuesta where IdPregunta=@IdPregunta and IdRespuesta=@IdRespuesta
+end
+
+go
+
 ----------------------------------------
 
 ----------------PA. JUEGO---------------
@@ -369,6 +428,32 @@ return 1
 end
 end
 
+go
+
+
+
+----------------------------------------
+
+----------------LOGIN---------------
+
+----------------------------------------
+
+create procedure LoginJugador
+@Usuario varchar (25),
+@Contraseña varchar (25)
+as
+begin
+	select * from Jugador j inner join Usuario u on u.Cedula = j.Cedula where u.Usuario = @Usuario and u.Contraseña = @Contraseña
+end
+go
+
+create procedure LoginAdministrador
+@Usuario varchar (25),
+@Contraseña varchar (25)
+as
+begin
+	select * from Administrador a inner join Usuario u on u.Cedula = a.Cedula where u.Usuario = @Usuario and u.Contraseña = @Contraseña
+end
 go
 
 
