@@ -55,11 +55,10 @@ CREATE TABLE Juego
 )
 go
 
-CREATE TABLE JuegoCliente
+CREATE TABLE JuegoJugador
 (
 	Cedula varchar (9) Foreign Key References Jugador(Cedula),
 	IdJuego int Foreign Key References Juego(IdJuego),
-	Terminado bit,
 	Primary Key(Cedula,IdJuego)
 	
 )
@@ -299,6 +298,11 @@ end
 
 begin tran
 delete from Respuesta where IdPregunta=@IdPregunta
+if (@@ERROR<>0)
+begin
+rollback tran
+return -2
+end
 delete from Pregunta where IdPregunta=@IdPregunta
 
 if (@@ERROR<>0)
@@ -413,7 +417,13 @@ end
 
 begin tran
 Insert into Juego(Tiradas,FechaInicio,FechaFin) values (0,GETDATE(),null)
-Insert into JuegoCliente(Cedula,IdJuego) values (@Cedula,@@IDENTITY)
+if (@@ERROR<>0)
+begin
+rollback tran
+return -2
+end
+
+Insert into JuegoJugador(Cedula,IdJuego) values (@Cedula,@@IDENTITY)
 
 if (@@ERROR<>0)
 begin
