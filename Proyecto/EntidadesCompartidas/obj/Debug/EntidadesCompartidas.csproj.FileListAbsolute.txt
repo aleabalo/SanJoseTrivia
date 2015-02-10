@@ -10,3 +10,7 @@ C:\Users\Mateo\Desktop\Nueva carpeta (2)\SanJoseTrivia\Proyecto\EntidadesCompart
 C:\Users\Mateo\Desktop\Nueva carpeta (2)\SanJoseTrivia\Proyecto\EntidadesCompartidas\bin\Debug\EntidadesCompartidas.pdb
 C:\Users\Mateo\Desktop\Nueva carpeta (2)\SanJoseTrivia\Proyecto\EntidadesCompartidas\obj\Debug\EntidadesCompartidas.dll
 C:\Users\Mateo\Desktop\Nueva carpeta (2)\SanJoseTrivia\Proyecto\EntidadesCompartidas\obj\Debug\EntidadesCompartidas.pdb
+D:\ProyectoTrivia\SanJoseTrivia\Proyecto\EntidadesCompartidas\bin\Debug\EntidadesCompartidas.dll
+D:\ProyectoTrivia\SanJoseTrivia\Proyecto\EntidadesCompartidas\bin\Debug\EntidadesCompartidas.pdb
+D:\ProyectoTrivia\SanJoseTrivia\Proyecto\EntidadesCompartidas\obj\Debug\EntidadesCompartidas.dll
+D:\ProyectoTrivia\SanJoseTrivia\Proyecto\EntidadesCompartidas\obj\Debug\EntidadesCompartidas.pdb

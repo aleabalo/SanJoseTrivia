@@ -33,7 +33,6 @@ public class Service : System.Web.Services.WebService
         Console.WriteLine(_NodoDetalle);
         SoapException _MiEx = new SoapException("Error WS", SoapException.ClientFaultCode, Context.Request.Url.AbsoluteUri, _NodoError);
         throw _MiEx;
-        return;
     }
 
 

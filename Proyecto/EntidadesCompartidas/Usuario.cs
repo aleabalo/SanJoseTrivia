@@ -19,7 +19,12 @@ namespace EntidadesCompartidas
         public string Cedula
         {
             get { return _cedula; }
-            set { _cedula = value; }
+            set {
+                if (value.Length > 8)
+                { throw new Exception("Cedula inválida"); }
+                else
+                { _cedula = value; }
+            }
         }
 
         public string Contraseña

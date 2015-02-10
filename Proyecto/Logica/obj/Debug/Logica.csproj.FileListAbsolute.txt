@@ -19,3 +19,12 @@ C:\Users\Mateo\Desktop\Nueva carpeta (2)\SanJoseTrivia\Proyecto\Logica\bin\Debug
 C:\Users\Mateo\Desktop\Nueva carpeta (2)\SanJoseTrivia\Proyecto\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
 C:\Users\Mateo\Desktop\Nueva carpeta (2)\SanJoseTrivia\Proyecto\Logica\obj\Debug\Logica.dll
 C:\Users\Mateo\Desktop\Nueva carpeta (2)\SanJoseTrivia\Proyecto\Logica\obj\Debug\Logica.pdb
+D:\ProyectoTrivia\SanJoseTrivia\Proyecto\Logica\bin\Debug\Logica.dll
+D:\ProyectoTrivia\SanJoseTrivia\Proyecto\Logica\bin\Debug\Logica.pdb
+D:\ProyectoTrivia\SanJoseTrivia\Proyecto\Logica\bin\Debug\EntidadesCompartidas.dll
+D:\ProyectoTrivia\SanJoseTrivia\Proyecto\Logica\bin\Debug\Persistencia.dll
+D:\ProyectoTrivia\SanJoseTrivia\Proyecto\Logica\bin\Debug\EntidadesCompartidas.pdb
+D:\ProyectoTrivia\SanJoseTrivia\Proyecto\Logica\bin\Debug\Persistencia.pdb
+D:\ProyectoTrivia\SanJoseTrivia\Proyecto\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+D:\ProyectoTrivia\SanJoseTrivia\Proyecto\Logica\obj\Debug\Logica.dll
+D:\ProyectoTrivia\SanJoseTrivia\Proyecto\Logica\obj\Debug\Logica.pdb

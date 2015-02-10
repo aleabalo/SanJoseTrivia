@@ -15,3 +15,10 @@ C:\Users\Mateo\Desktop\Nueva carpeta (2)\SanJoseTrivia\Proyecto\Persistencia\bin
 C:\Users\Mateo\Desktop\Nueva carpeta (2)\SanJoseTrivia\Proyecto\Persistencia\bin\Debug\EntidadesCompartidas.pdb
 C:\Users\Mateo\Desktop\Nueva carpeta (2)\SanJoseTrivia\Proyecto\Persistencia\obj\Debug\Persistencia.dll
 C:\Users\Mateo\Desktop\Nueva carpeta (2)\SanJoseTrivia\Proyecto\Persistencia\obj\Debug\Persistencia.pdb
+D:\ProyectoTrivia\SanJoseTrivia\Proyecto\Persistencia\bin\Debug\Persistencia.dll
+D:\ProyectoTrivia\SanJoseTrivia\Proyecto\Persistencia\bin\Debug\Persistencia.pdb
+D:\ProyectoTrivia\SanJoseTrivia\Proyecto\Persistencia\bin\Debug\EntidadesCompartidas.dll
+D:\ProyectoTrivia\SanJoseTrivia\Proyecto\Persistencia\bin\Debug\EntidadesCompartidas.pdb
+D:\ProyectoTrivia\SanJoseTrivia\Proyecto\Persistencia\obj\Debug\Persistencia.csprojResolveAssemblyReference.cache
+D:\ProyectoTrivia\SanJoseTrivia\Proyecto\Persistencia\obj\Debug\Persistencia.dll
+D:\ProyectoTrivia\SanJoseTrivia\Proyecto\Persistencia\obj\Debug\Persistencia.pdb
