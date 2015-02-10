@@ -14,7 +14,24 @@ ON(
 )
 go
 
+--pone en uso la bd-------------------------------------------------------------------------
+USE master
+--go
+--Create Login [IIS APPPOOL\DefaultAppPool] From Windows 
+--go
+
+Exec master..sp_addsrvrolemember 'IIS APPPOOL\DefaultAppPool', 'sysadmin'
+go
+
+Use Trivia
+go
+
+create USER [IIS APPPOOL\DefaultAppPool] From Login [IIS APPPOOL\DefaultAppPool] 
+go
+
+
 -------------------------------------
+
 USE Trivia
 go
 
@@ -49,20 +66,13 @@ go
 CREATE TABLE Juego
 (
 	IdJuego int Primary Key Identity(1,1),
-	Tiradas int default (0),
-	FechaInicio datetime,
+	Cedula varchar(9) foreign key references Jugador(Cedula),
+	Tiradas int default (0) not null,
+	FechaInicio datetime not null,
 	FechaFin datetime default (null)
 )
 go
 
-CREATE TABLE JuegoJugador
-(
-	Cedula varchar (9) Foreign Key References Jugador(Cedula),
-	IdJuego int Foreign Key References Juego(IdJuego),
-	Primary Key(Cedula,IdJuego)
-	
-)
-go
 
 CREATE TABLE Pregunta
 (
@@ -87,8 +97,8 @@ CREATE TABLE Respuesta
 (
 	IdPregunta int Foreign Key References Pregunta(idPregunta),
 	IdRespuesta int Check(IdRespuesta > 0 AND IdRespuesta < 4),
-	Texto varchar(70),
-	Correcto bit default (0),
+	Texto varchar(70) not null,
+	Correcto bit default (0) not null,
 	Primary Key(IdPregunta,IdRespuesta)
 )
 go
@@ -268,6 +278,124 @@ end
 go
 
 
+Create Procedure BuscarJugador
+@Cedula varchar(9)
+AS
+begin
+select * from Usuario inner join Jugador on Usuario.Cedula=Jugador.Cedula
+where Jugador.Cedula=@Cedula
+end
+go
+
+
+
+
+Create Procedure ModificarJugador
+@Usuario varchar(25), 
+@Cedula varchar(9),
+@Contraseña varchar(25),
+@NombreCompleto varchar(120),
+@NombrePublico varchar(120)
+AS
+begin
+if exists(select * from Usuario where Usuario.Usuario=@Usuario)
+begin
+return -1
+end
+
+if exists(select * from Usuario where Usuario.Cedula=@Cedula)
+begin
+return -2
+end
+
+begin tran
+update Jugador set NombrePublico=@NombrePublico where  cedula=@Cedula
+	if(@@ERROR<>0)
+	begin
+		return -2
+		rollback tran
+	end
+update Usuario set Usuario=@Usuario,Contraseña=@Contraseña,nombreCompleto=@NombreCompleto where cedula=@Cedula
+	if(@@ERROR<>0)
+	begin
+		return -2
+		rollback tran
+	end
+
+else
+	begin
+		commit tran
+		return 0
+	end
+end
+
+go
+
+
+
+Create Procedure BajaJugador
+@Cedula varchar (9)
+AS
+begin
+if not exists(select * from Usuario where Usuario.Cedula=@Cedula)
+begin
+return -1
+end
+
+begin tran
+delete from Juego where Juego.Cedula=@Cedula
+	if(@@ERROR<>0)
+		begin
+			rollback tran
+			return -2
+		end
+
+delete from Jugador where Jugador.Cedula=@Cedula
+	if(@@ERROR<>0)
+		begin
+			rollback tran
+			return -2
+		end
+delete from Usuario where Usuario.Cedula=@Cedula
+	if(@@ERROR<>0)
+		begin
+			rollback tran
+			return -2
+		end
+	else
+		begin
+			commit tran
+		return 0
+	end
+end
+go
+
+
+
+----------------------------------------
+
+----------------LOGIN---------------
+
+----------------------------------------
+
+create procedure LoginJugador
+@Usuario varchar (25),
+@Contraseña varchar (25)
+as
+begin
+	select * from Jugador j inner join Usuario u on u.Cedula = j.Cedula where u.Usuario = @Usuario and u.Contraseña = @Contraseña
+end
+go
+
+create procedure LoginAdministrador
+@Usuario varchar (25),
+@Contraseña varchar (25)
+as
+begin
+	select * from Administrador a inner join Usuario u on u.Cedula = a.Cedula where u.Usuario = @Usuario and u.Contraseña = @Contraseña
+end
+go
+
 
 ----------------------------------------
 
@@ -361,6 +489,20 @@ end
 
 go
 
+
+create procedure ModificarRespuesta
+@IdPregunta int,
+@IdRespuesta int,
+@Texto varchar(70),
+@Correcto bit
+AS
+begin
+update Respuesta set Texto=@Texto,Correcto=@Correcto where IdPregunta=@IdPregunta and IdRespuesta=@IdRespuesta
+end
+
+go
+
+
 create procedure BajaRespuesta
 @IdPregunta int,
 @IdRespuesta int
@@ -406,65 +548,43 @@ go
 ----------------------------------------
 
 
-Create Procedure AltaJuego
-@Cedula varchar(9)
-AS
-Begin
-if not exists(select * from Jugador where Jugador.Cedula=@Cedula)
-begin
-return -1
-end
+--Create Procedure AltaJuego
+--@Cedula varchar(9)
+--AS
+--Begin
+--if not exists(select * from Jugador where Jugador.Cedula=@Cedula)
+--begin
+--return -1
+--end
 
-begin tran
-Insert into Juego(Tiradas,FechaInicio,FechaFin) values (0,GETDATE(),null)
-if (@@ERROR<>0)
-begin
-rollback tran
-return -2
-end
+--begin tran
+--Insert into Juego(Tiradas,FechaInicio,FechaFin) values (0,GETDATE(),null)
+--if (@@ERROR<>0)
+--begin
+--rollback tran
+--return -2
+--end
 
-Insert into JuegoJugador(Cedula,IdJuego) values (@Cedula,@@IDENTITY)
+--Insert into JuegoJugador(Cedula,IdJuego) values (@Cedula,@@IDENTITY)
 
-if (@@ERROR<>0)
-begin
-rollback tran
-return -2
-end
+--if (@@ERROR<>0)
+--begin
+--rollback tran
+--return -2
+--end
 
-else
-begin
-commit tran
-return 1
-end
-end
+--else
+--begin
+--commit tran
+--return 1
+--end
+--end
 
-go
+--go
 
 
 
-----------------------------------------
 
-----------------LOGIN---------------
-
-----------------------------------------
-
-create procedure LoginJugador
-@Usuario varchar (25),
-@Contraseña varchar (25)
-as
-begin
-	select * from Jugador j inner join Usuario u on u.Cedula = j.Cedula where u.Usuario = @Usuario and u.Contraseña = @Contraseña
-end
-go
-
-create procedure LoginAdministrador
-@Usuario varchar (25),
-@Contraseña varchar (25)
-as
-begin
-	select * from Administrador a inner join Usuario u on u.Cedula = a.Cedula where u.Usuario = @Usuario and u.Contraseña = @Contraseña
-end
-go
 
 
 
