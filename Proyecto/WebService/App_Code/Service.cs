@@ -33,6 +33,7 @@ public class Service : System.Web.Services.WebService
         Console.WriteLine(_NodoDetalle);
         SoapException _MiEx = new SoapException("Error WS", SoapException.ClientFaultCode, Context.Request.Url.AbsoluteUri, _NodoError);
         throw _MiEx;
+        return;
     }
 
 
@@ -49,7 +50,9 @@ public class Service : System.Web.Services.WebService
         }
         catch (Exception ex)
         {
+
             this.GenerarSoapException(ex);
+            
         }
         return admin;
     }

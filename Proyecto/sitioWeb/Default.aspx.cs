@@ -17,7 +17,47 @@ public partial class _Default : System.Web.UI.Page
         string _usuario = Login1.UserName;
         string _contraseña = Login1.Password;
 
-        WebService Servicio = new WebService();
+        Service Servicio = new Service();
+
+        Administrador admn = null;
+
+        Jugador jug = null;
+
+        try
+        {
+            //llamo al metodo de login pasando un obeto del tipo usuario
+            admn = Servicio.LoginAdministrador(_usuario, _contraseña);
+            jug = Servicio.LoginJugador(_usuario, _contraseña);
+        }
+        catch (System.Web.Services.Protocols.SoapException ex)
+        {
+            lblError.Text = ex.Detail.InnerText;
+        }
+        catch (Exception ex)
+        {
+            lblError.Text = ex.Message;
+        }
+
+        if (admn != null) // si es disitnto de null lo cargo en la session y doy ok al login
+        {
+            Session["Administrador"] = admn;
+            e.Authenticated = true;
+            Response.Redirect("IngresoAdministrador.aspx");
+        }
+        else if (jug != null)
+        {
+            Session["Jugador"] = jug;
+            e.Authenticated = true;
+            Response.Redirect("IngresoJugador.aspx");
+        }
+        else // si no es administrador ni jugador error
+        {
+            lblError.Text = "Usuario y/o Contraseña incorrecta";
+            e.Authenticated = false;
+
+        }
+
+        
 
 
     }

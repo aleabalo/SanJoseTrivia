@@ -2,16 +2,6 @@
 <wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
-      <s:element name="HelloWorld">
-        <s:complexType />
-      </s:element>
-      <s:element name="HelloWorldResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="LoginAdministrador">
         <s:complexType>
           <s:sequence>
@@ -124,12 +114,6 @@
       </s:element>
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="HelloWorldSoapIn">
-    <wsdl:part name="parameters" element="tns:HelloWorld" />
-  </wsdl:message>
-  <wsdl:message name="HelloWorldSoapOut">
-    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
-  </wsdl:message>
   <wsdl:message name="LoginAdministradorSoapIn">
     <wsdl:part name="parameters" element="tns:LoginAdministrador" />
   </wsdl:message>
@@ -172,11 +156,7 @@
   <wsdl:message name="AgregarJugadorSoapOut">
     <wsdl:part name="parameters" element="tns:AgregarJugadorResponse" />
   </wsdl:message>
-  <wsdl:portType name="WebServiceSoap">
-    <wsdl:operation name="HelloWorld">
-      <wsdl:input message="tns:HelloWorldSoapIn" />
-      <wsdl:output message="tns:HelloWorldSoapOut" />
-    </wsdl:operation>
+  <wsdl:portType name="ServiceSoap">
     <wsdl:operation name="LoginAdministrador">
       <wsdl:input message="tns:LoginAdministradorSoapIn" />
       <wsdl:output message="tns:LoginAdministradorSoapOut" />
@@ -206,17 +186,8 @@
       <wsdl:output message="tns:AgregarJugadorSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="HelloWorld">
-      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="LoginAdministrador">
       <soap:operation soapAction="http://tempuri.org/LoginAdministrador" style="document" />
       <wsdl:input>
@@ -281,17 +252,8 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="HelloWorld">
-      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="LoginAdministrador">
       <soap12:operation soapAction="http://tempuri.org/LoginAdministrador" style="document" />
       <wsdl:input>
@@ -356,12 +318,12 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:service name="WebService">
-    <wsdl:port name="WebServiceSoap" binding="tns:WebServiceSoap">
-      <soap:address location="http://localhost/Servicio/WebService.asmx" />
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="http://localhost/apiTrivia/Service.asmx" />
     </wsdl:port>
-    <wsdl:port name="WebServiceSoap12" binding="tns:WebServiceSoap12">
-      <soap12:address location="http://localhost/Servicio/WebService.asmx" />
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="http://localhost/apiTrivia/Service.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

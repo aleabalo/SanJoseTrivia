@@ -28,3 +28,9 @@ D:\ProyectoTrivia\SanJoseTrivia\Proyecto\Logica\bin\Debug\Persistencia.pdb
 D:\ProyectoTrivia\SanJoseTrivia\Proyecto\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
 D:\ProyectoTrivia\SanJoseTrivia\Proyecto\Logica\obj\Debug\Logica.dll
 D:\ProyectoTrivia\SanJoseTrivia\Proyecto\Logica\obj\Debug\Logica.pdb
+C:\Users\ale\Desktop\SanJoseTrivia\Proyecto\Logica\bin\Debug\Logica.dll
+C:\Users\ale\Desktop\SanJoseTrivia\Proyecto\Logica\bin\Debug\Logica.pdb
+C:\Users\ale\Desktop\SanJoseTrivia\Proyecto\Logica\bin\Debug\EntidadesCompartidas.dll
+C:\Users\ale\Desktop\SanJoseTrivia\Proyecto\Logica\bin\Debug\Persistencia.dll
+C:\Users\ale\Desktop\SanJoseTrivia\Proyecto\Logica\bin\Debug\EntidadesCompartidas.pdb
+C:\Users\ale\Desktop\SanJoseTrivia\Proyecto\Logica\bin\Debug\Persistencia.pdb

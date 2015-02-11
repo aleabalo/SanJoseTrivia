@@ -22,3 +22,7 @@ D:\ProyectoTrivia\SanJoseTrivia\Proyecto\Persistencia\bin\Debug\EntidadesCompart
 D:\ProyectoTrivia\SanJoseTrivia\Proyecto\Persistencia\obj\Debug\Persistencia.csprojResolveAssemblyReference.cache
 D:\ProyectoTrivia\SanJoseTrivia\Proyecto\Persistencia\obj\Debug\Persistencia.dll
 D:\ProyectoTrivia\SanJoseTrivia\Proyecto\Persistencia\obj\Debug\Persistencia.pdb
+C:\Users\ale\Desktop\SanJoseTrivia\Proyecto\Persistencia\bin\Debug\Persistencia.dll
+C:\Users\ale\Desktop\SanJoseTrivia\Proyecto\Persistencia\bin\Debug\Persistencia.pdb
+C:\Users\ale\Desktop\SanJoseTrivia\Proyecto\Persistencia\bin\Debug\EntidadesCompartidas.dll
+C:\Users\ale\Desktop\SanJoseTrivia\Proyecto\Persistencia\bin\Debug\EntidadesCompartidas.pdb

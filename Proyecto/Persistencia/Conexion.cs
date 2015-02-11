@@ -7,6 +7,6 @@ namespace Persistencia
 {
     internal class Conexion
     {
-            public const string MiConexion = "Data Source = (local)//SQL; Initial Catalog = Trivia; Integrated Security = True";
+        public const string MiConexion = "Data Source = (local)\\SQL; Initial Catalog = Trivia; Integrated Security = True";
     }
 }

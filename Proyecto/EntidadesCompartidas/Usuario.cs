@@ -20,10 +20,7 @@ namespace EntidadesCompartidas
         {
             get { return _cedula; }
             set {
-                if (value.Length > 8)
-                { throw new Exception("Cedula inválida"); }
-                else
-                { _cedula = value; }
+                 _cedula = value; 
             }
         }
 

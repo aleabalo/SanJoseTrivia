@@ -20,7 +20,7 @@ public partial class ABMAdministradores : System.Web.UI.Page
         documento = txtDocumento.Text.Trim();
         try
         {
-            WebService servicio = new WebService();
+            Service servicio = new Service();
             admin = servicio.BuscarAdministrador(documento);
 
             if (admin != null)
@@ -74,7 +74,7 @@ public partial class ABMAdministradores : System.Web.UI.Page
 
         try
         {
-            WebService servicio = new WebService();
+            Service servicio = new Service();
 
             documento = txtDocumento.Text.Trim();
             usuarioLogueo = txtUsuarioLogueo.Text.Trim();
@@ -118,7 +118,7 @@ public partial class ABMAdministradores : System.Web.UI.Page
 
         try
         {
-            WebService servicio = new WebService();
+            Service servicio = new Service();
 
             documento = txtDocumento.Text.Trim();
             usuarioLogueo = txtUsuarioLogueo.Text.Trim();
@@ -159,7 +159,7 @@ public partial class ABMAdministradores : System.Web.UI.Page
 
         try
         {
-            WebService servicio = new WebService();
+            Service servicio = new Service();
 
             if (admin != null)
             {
