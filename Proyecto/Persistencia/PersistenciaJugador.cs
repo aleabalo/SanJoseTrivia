@@ -91,7 +91,7 @@ namespace Persistencia
                 {
                     cedula = (string)_oRead["Cedula"];
                     contraseña = (string)_oRead["Contraseña"];
-                    usuario = (string)_oRead["UsuLogueo"];
+                    usuario = (string)_oRead["Usuario"];
                     nombreCompleto = (string)_oRead["NombreCompleto"];
                     nombrePublico = (string)_oRead["NombrePublico"];
                     j = new Jugador(cedula, contraseña, usuario, nombreCompleto, nombrePublico);
@@ -171,7 +171,7 @@ namespace Persistencia
                 if (_oRead.Read())
                 {
                     _contraseña = (string)_oRead["Contraseña"];
-                    _usuario = (string)_oRead["UsuLogueo"];
+                    _usuario = (string)_oRead["Usuario"];
                     _nombreCompleto = (string)_oRead["NombreCompleto"];
                     _nombrePublico = (string)_oRead["NombrePublico"];
 

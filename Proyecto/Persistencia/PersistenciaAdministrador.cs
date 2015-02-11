@@ -119,9 +119,9 @@ namespace Persistencia
                 if (_oRead.Read())
                 {
                     _contraseña = (string)_oRead["Contraseña"];
-                    _usuario = (string)_oRead["UsuLogueo"];
+                    _usuario = (string)_oRead["Usuario"];
                     _nombreCompleto = (string)_oRead["NombreCompleto"];
-                    _verEstadisticas = (bool)_oRead["Estadistica"];
+                    _verEstadisticas = (bool)_oRead["VerEstadisticas"];
 
                     adm = new Administrador(Cedula, _contraseña, _usuario, _nombreCompleto, _verEstadisticas);
                 }
@@ -208,9 +208,9 @@ namespace Persistencia
                 {
                     cedula = (string)_oRead["Cedula"];
                     contraseña = (string)_oRead["Contraseña"];
-                    usuario = (string)_oRead["UsuLogueo"];
-                    nombreCompleto = (string)_oRead["NombreCompleto"]; 
-                    estadistica = (bool)_oRead["Estadistica"];
+                    usuario = (string)_oRead["Usuario"];
+                    nombreCompleto = (string)_oRead["NombreCompleto"];
+                    estadistica = (bool)_oRead["VerEstadisticas"];
                     adm = new Administrador(cedula, contraseña, usuario, nombreCompleto, estadistica);
                     _oRead.Close();
                 }

@@ -18,7 +18,7 @@ public partial class RegistroJugador : System.Web.UI.Page
 
     protected void btnAgregar_Click(object sender, EventArgs e)
     {
-        Service Servicio = new Service();
+        WebService Servicio = new WebService();
         try
         {
             string usuario = txtUsuario.Text;
