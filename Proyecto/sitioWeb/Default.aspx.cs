@@ -17,7 +17,7 @@ public partial class _Default : System.Web.UI.Page
         string _usuario = Login1.UserName;
         string _contraseña = Login1.Password;
 
-        WebService Servicio = new WebService();
+        webService.Service Servicio = new webService.Service();
 
         Administrador admn = null;
 

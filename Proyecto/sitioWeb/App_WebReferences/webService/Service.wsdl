@@ -2,16 +2,6 @@
 <wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
-      <s:element name="HelloWorld">
-        <s:complexType />
-      </s:element>
-      <s:element name="HelloWorldResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="LoginAdministrador">
         <s:complexType>
           <s:sequence>
@@ -122,14 +112,96 @@
       <s:element name="AgregarJugadorResponse">
         <s:complexType />
       </s:element>
+      <s:element name="BuscarPregunta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdPregunta" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarPreguntaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuscarPreguntaResult" type="tns:Pregunta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Pregunta">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdPregunta" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TextoPregunta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tipo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Respuestas" type="tns:ArrayOfRespuesta" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRespuesta">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Respuesta" nillable="true" type="tns:Respuesta" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Respuesta">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TextoRespuesta" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Correcta" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AgregarPregunta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="P" type="tns:Pregunta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AgregarPreguntaResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ModificarPregunta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="P" type="tns:Pregunta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarPreguntaResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="BajaPregunta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="preg" type="tns:Pregunta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BajaPreguntaResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AgregarRespuesta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="res" type="tns:Respuesta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AgregarRespuestaResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="BuscarRespuesta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarRespuestaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuscarRespuestaResult" type="tns:Respuesta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="HelloWorldSoapIn">
-    <wsdl:part name="parameters" element="tns:HelloWorld" />
-  </wsdl:message>
-  <wsdl:message name="HelloWorldSoapOut">
-    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
-  </wsdl:message>
   <wsdl:message name="LoginAdministradorSoapIn">
     <wsdl:part name="parameters" element="tns:LoginAdministrador" />
   </wsdl:message>
@@ -172,11 +244,43 @@
   <wsdl:message name="AgregarJugadorSoapOut">
     <wsdl:part name="parameters" element="tns:AgregarJugadorResponse" />
   </wsdl:message>
-  <wsdl:portType name="WebServiceSoap">
-    <wsdl:operation name="HelloWorld">
-      <wsdl:input message="tns:HelloWorldSoapIn" />
-      <wsdl:output message="tns:HelloWorldSoapOut" />
-    </wsdl:operation>
+  <wsdl:message name="BuscarPreguntaSoapIn">
+    <wsdl:part name="parameters" element="tns:BuscarPregunta" />
+  </wsdl:message>
+  <wsdl:message name="BuscarPreguntaSoapOut">
+    <wsdl:part name="parameters" element="tns:BuscarPreguntaResponse" />
+  </wsdl:message>
+  <wsdl:message name="AgregarPreguntaSoapIn">
+    <wsdl:part name="parameters" element="tns:AgregarPregunta" />
+  </wsdl:message>
+  <wsdl:message name="AgregarPreguntaSoapOut">
+    <wsdl:part name="parameters" element="tns:AgregarPreguntaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModificarPreguntaSoapIn">
+    <wsdl:part name="parameters" element="tns:ModificarPregunta" />
+  </wsdl:message>
+  <wsdl:message name="ModificarPreguntaSoapOut">
+    <wsdl:part name="parameters" element="tns:ModificarPreguntaResponse" />
+  </wsdl:message>
+  <wsdl:message name="BajaPreguntaSoapIn">
+    <wsdl:part name="parameters" element="tns:BajaPregunta" />
+  </wsdl:message>
+  <wsdl:message name="BajaPreguntaSoapOut">
+    <wsdl:part name="parameters" element="tns:BajaPreguntaResponse" />
+  </wsdl:message>
+  <wsdl:message name="AgregarRespuestaSoapIn">
+    <wsdl:part name="parameters" element="tns:AgregarRespuesta" />
+  </wsdl:message>
+  <wsdl:message name="AgregarRespuestaSoapOut">
+    <wsdl:part name="parameters" element="tns:AgregarRespuestaResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuscarRespuestaSoapIn">
+    <wsdl:part name="parameters" element="tns:BuscarRespuesta" />
+  </wsdl:message>
+  <wsdl:message name="BuscarRespuestaSoapOut">
+    <wsdl:part name="parameters" element="tns:BuscarRespuestaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
     <wsdl:operation name="LoginAdministrador">
       <wsdl:input message="tns:LoginAdministradorSoapIn" />
       <wsdl:output message="tns:LoginAdministradorSoapOut" />
@@ -205,18 +309,33 @@
       <wsdl:input message="tns:AgregarJugadorSoapIn" />
       <wsdl:output message="tns:AgregarJugadorSoapOut" />
     </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
-    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="HelloWorld">
-      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
+    <wsdl:operation name="BuscarPregunta">
+      <wsdl:input message="tns:BuscarPreguntaSoapIn" />
+      <wsdl:output message="tns:BuscarPreguntaSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="AgregarPregunta">
+      <wsdl:input message="tns:AgregarPreguntaSoapIn" />
+      <wsdl:output message="tns:AgregarPreguntaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarPregunta">
+      <wsdl:input message="tns:ModificarPreguntaSoapIn" />
+      <wsdl:output message="tns:ModificarPreguntaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BajaPregunta">
+      <wsdl:input message="tns:BajaPreguntaSoapIn" />
+      <wsdl:output message="tns:BajaPreguntaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AgregarRespuesta">
+      <wsdl:input message="tns:AgregarRespuestaSoapIn" />
+      <wsdl:output message="tns:AgregarRespuestaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarRespuesta">
+      <wsdl:input message="tns:BuscarRespuestaSoapIn" />
+      <wsdl:output message="tns:BuscarRespuestaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="LoginAdministrador">
       <soap:operation soapAction="http://tempuri.org/LoginAdministrador" style="document" />
       <wsdl:input>
@@ -280,18 +399,63 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
-    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="HelloWorld">
-      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+    <wsdl:operation name="BuscarPregunta">
+      <soap:operation soapAction="http://tempuri.org/BuscarPregunta" style="document" />
       <wsdl:input>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AgregarPregunta">
+      <soap:operation soapAction="http://tempuri.org/AgregarPregunta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarPregunta">
+      <soap:operation soapAction="http://tempuri.org/ModificarPregunta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaPregunta">
+      <soap:operation soapAction="http://tempuri.org/BajaPregunta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarRespuesta">
+      <soap:operation soapAction="http://tempuri.org/AgregarRespuesta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarRespuesta">
+      <soap:operation soapAction="http://tempuri.org/BuscarRespuesta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="LoginAdministrador">
       <soap12:operation soapAction="http://tempuri.org/LoginAdministrador" style="document" />
       <wsdl:input>
@@ -355,13 +519,67 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="BuscarPregunta">
+      <soap12:operation soapAction="http://tempuri.org/BuscarPregunta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarPregunta">
+      <soap12:operation soapAction="http://tempuri.org/AgregarPregunta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarPregunta">
+      <soap12:operation soapAction="http://tempuri.org/ModificarPregunta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaPregunta">
+      <soap12:operation soapAction="http://tempuri.org/BajaPregunta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarRespuesta">
+      <soap12:operation soapAction="http://tempuri.org/AgregarRespuesta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarRespuesta">
+      <soap12:operation soapAction="http://tempuri.org/BuscarRespuesta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
-  <wsdl:service name="WebService">
-    <wsdl:port name="WebServiceSoap" binding="tns:WebServiceSoap">
-      <soap:address location="http://localhost/WebSite/WebService.asmx" />
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="http://localhost/WebSite/Service.asmx" />
     </wsdl:port>
-    <wsdl:port name="WebServiceSoap12" binding="tns:WebServiceSoap12">
-      <soap12:address location="http://localhost/WebSite/WebService.asmx" />
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="http://localhost/WebSite/Service.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

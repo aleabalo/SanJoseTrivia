@@ -9,5 +9,10 @@ namespace Logica
 {
     public interface ILogicaPregunta
     {
+        Pregunta BuscarPregunta(int IdPregunta);
+        void AgregarPregunta(Pregunta p);
+        void BajaPregunta(Pregunta p);
+        void ModificarPregunta(Pregunta p);
+       
     }
 }

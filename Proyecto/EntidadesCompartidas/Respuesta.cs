@@ -41,6 +41,7 @@ namespace EntidadesCompartidas
             Correcta = oCorrecta;
         }
 
-
+        public Respuesta()
+        { }
     }
 }

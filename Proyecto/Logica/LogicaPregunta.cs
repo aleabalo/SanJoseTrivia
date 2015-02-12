@@ -22,6 +22,31 @@ namespace Logica
             return _instancia;
         }
 
+        public Pregunta BuscarPregunta(int IdPregunta)
+        {
+            IPersistenciaPregunta FPregunta = FabricaPersistencia.getPersistenciaPregunta();
+            Pregunta p = FPregunta.BuscarPregunta(IdPregunta);
+            return p;
+        }
 
+        public void AgregarPregunta(Pregunta p)
+        {
+            IPersistenciaPregunta FPregunta = FabricaPersistencia.getPersistenciaPregunta();
+            FPregunta.AgregarPregunta(p);
+           
+        }
+
+        public void BajaPregunta(Pregunta p)
+        {
+            IPersistenciaPregunta FPreg = FabricaPersistencia.getPersistenciaPregunta();
+            FPreg.BajaPregunta(p);
+        }
+
+        public void ModificarPregunta(Pregunta p)
+        {
+            IPersistenciaPregunta FPregunta = FabricaPersistencia.getPersistenciaPregunta();
+            FPregunta.ModificarPregunta(p);
+
+        }
     }
 }

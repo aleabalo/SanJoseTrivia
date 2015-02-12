@@ -10,7 +10,7 @@ namespace Persistencia
     {
         void AgregarPregunta(Pregunta unaPregunta);
         void BajaPregunta(Pregunta unaPregunta);
-        //Pregunta BuscarPregunta(int IdPregunta);
+        Pregunta BuscarPregunta(int IdPregunta);
         void ModificarPregunta(Pregunta unaPregunta);
     }
 }

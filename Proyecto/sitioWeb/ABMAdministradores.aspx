@@ -156,8 +156,8 @@
                 <td class="style4">
                     &nbsp;</td>
                 <td class="style11">
-                    <asp:RadioButton ID="rbtVisualizaEstadisticas" runat="server" Enabled="False" 
-                        Text="Visualiza Estadisticas" />
+                    <asp:CheckBox ID="rbtVisualizaEstadisticas" runat="server" 
+                        Text="Visualiza Estadísticas" />
                 </td>
                 <td>
                     &nbsp;</td>

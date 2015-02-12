@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+
 using webService;
 
 public partial class ABMAdministradores : System.Web.UI.Page
@@ -20,7 +21,7 @@ public partial class ABMAdministradores : System.Web.UI.Page
         documento = txtDocumento.Text.Trim();
         try
         {
-            WebService servicio = new WebService();
+            webService.Service servicio = new webService.Service();
             admin = servicio.BuscarAdministrador(documento);
 
             if (admin != null)
@@ -74,7 +75,7 @@ public partial class ABMAdministradores : System.Web.UI.Page
 
         try
         {
-            WebService servicio = new WebService();
+            webService.Service servicio = new webService.Service();
 
             documento = txtDocumento.Text.Trim();
             usuarioLogueo = txtUsuarioLogueo.Text.Trim();
@@ -118,7 +119,7 @@ public partial class ABMAdministradores : System.Web.UI.Page
 
         try
         {
-            WebService servicio = new WebService();
+            webService.Service servicio = new webService.Service();
 
             documento = txtDocumento.Text.Trim();
             usuarioLogueo = txtUsuarioLogueo.Text.Trim();
@@ -133,7 +134,7 @@ public partial class ABMAdministradores : System.Web.UI.Page
             admin.NombreCompleto = nombreCompleto;
             admin.Estadistica = estadisticas;
 
-            servicio.AgregarAdministrador(admin);
+            servicio.ModificarAdministrador(admin);
 
             lblError.Text = "Modificación con éxito";
 
@@ -159,7 +160,7 @@ public partial class ABMAdministradores : System.Web.UI.Page
 
         try
         {
-            WebService servicio = new WebService();
+            webService.Service servicio = new webService.Service();
 
             if (admin != null)
             {

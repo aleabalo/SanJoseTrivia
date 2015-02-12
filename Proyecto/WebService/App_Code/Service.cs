@@ -33,7 +33,7 @@ public class Service : System.Web.Services.WebService
         Console.WriteLine(_NodoDetalle);
         SoapException _MiEx = new SoapException("Error WS", SoapException.ClientFaultCode, Context.Request.Url.AbsoluteUri, _NodoError);
         throw _MiEx;
-        return;
+        
     }
 
 
@@ -147,5 +147,83 @@ public class Service : System.Web.Services.WebService
             this.GenerarSoapException(ex);
         }
     }
-    
+
+
+    //PREGUNTA
+
+    [WebMethod]
+    public Pregunta BuscarPregunta(int IdPregunta)
+    {
+        Pregunta preg = null;
+        try
+        {
+            ILogicaPregunta LPregunta = FabricaLogica.getLogicaPregunta();
+            preg = LPregunta.BuscarPregunta(IdPregunta);
+        }
+        catch (Exception ex)
+        {
+            this.GenerarSoapException(ex);
+        }
+        return preg;
+    }
+
+    [WebMethod]
+    public void AgregarPregunta(Pregunta P)
+    {
+        try
+        {
+            ILogicaPregunta LPregunta = FabricaLogica.getLogicaPregunta();
+            LPregunta.AgregarPregunta(P);
+        }
+        catch (Exception ex)
+        {
+            this.GenerarSoapException(ex);
+        }
+    }
+
+    [WebMethod]
+    public void ModificarPregunta(Pregunta P)
+    {
+        try
+        {
+            ILogicaPregunta LPregunta = FabricaLogica.getLogicaPregunta();
+            LPregunta.ModificarPregunta(P);
+        }
+        catch (Exception ex)
+        {
+            this.GenerarSoapException(ex);
+        }
+    }
+
+
+    [WebMethod]
+    public void BajaPregunta(Pregunta preg)
+    {
+        try
+        {
+            ILogicaPregunta LPregunta = FabricaLogica.getLogicaPregunta();
+            LPregunta.BajaPregunta(preg);
+        }
+        catch (Exception ex)
+        {
+            this.GenerarSoapException(ex);
+        }
+    }
+
+
+
+    //RESPUESTAS
+
+    [WebMethod]
+    public void AgregarRespuesta(Respuesta res)
+    { }
+
+    [WebMethod]
+
+    public Respuesta BuscarRespuesta(int id)
+    {
+        Respuesta resp=null;
+        return resp;
+        
+    }
 }

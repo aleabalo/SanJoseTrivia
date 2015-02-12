@@ -10,7 +10,7 @@ go
 CREATE DATABASE Trivia
 ON(
 	NAME=Trivia,
-	FILENAME='C:\Trivia.mdf'
+	FILENAME='D:\Trivia.mdf'
 )
 go
 
@@ -404,14 +404,40 @@ go
 ----------------------------------------
 
 
-create procedure AltaPregunta
+Create procedure AltaPregunta
 @Tipo varchar(25),
-@Texto varchar(120)
+@TextoPregunta varchar(120),
+@TextoRespuesta1 varchar(120),
+@TextoRespuesta2 varchar(120),
+@TextoRespuesta3 varchar(120),
+@Correcta1 bit,
+@Correcta2 bit,
+@Correcta3 bit
 AS
 begin
-Insert into Pregunta(Tipo, Texto) values(@Tipo, @Texto)
+begin tran
+Insert into Pregunta(Tipo, Texto) values(@Tipo, @TextoPregunta)
+
+declare @identidad int
+set @identidad =@@IDENTITY
+
+Insert into Respuesta(IdPregunta,Texto,Correcto) values (@identidad, @TextoRespuesta1, @Correcta1)
+Insert into Respuesta(IdPregunta,Texto,Correcto) values (@identidad, @TextoRespuesta2, @Correcta2)
+Insert into Respuesta(IdPregunta,Texto,Correcto) values (@identidad, @TextoRespuesta3, @Correcta3)
+
+if (@@ERROR!=0)
+begin
+return -1
+rollback tran
 end
 
+else
+begin
+commit tran
+return 1
+end
+
+end
 go
 
 create procedure BajaPregunta
@@ -456,15 +482,45 @@ end
 
 go
 
+
 create procedure ModificarPregunta
-@IdPregunta int, 
+@IdPregunta int,
 @Tipo varchar(25),
-@Texto varchar(120)
+@TextoPregunta varchar(120),
+@TextoRespuesta1 varchar(120),
+@TextoRespuesta2 varchar(120),
+@TextoRespuesta3 varchar(120),
+@Correcta1 bit,
+@Correcta2 bit,
+@Correcta3 bit
 AS
 begin
-Update Pregunta set Tipo=@Tipo, Texto=@Texto where IdPregunta =@IdPregunta
+
+If not exists(select * from Preguntas where IdPregunta =@IdPregunta)
+return -1
+
+
+begin tran
+Update Pregunta set Tipo=@Tipo, Texto=@TextoPregunta where IdPregunta=@IdPregunta
+
+
+Update Respuesta set Texto=@TextoRespuesta1,Correcto=@Correcta1 where IdPregunta=@IdPregunta and IdRespuesta=1
+Update Respuesta set Texto=@TextoRespuesta2,Correcto=@Correcta2 where IdPregunta=@IdPregunta and IdRespuesta=2
+Update Respuesta set Texto=@TextoRespuesta3,Correcto=@Correcta3 where IdPregunta=@IdPregunta and IdRespuesta=3
+
+if (@@ERROR!=0)
+begin
+return -1
+rollback tran
 end
 
+else
+begin
+commit tran
+return 1
+end
+
+end
 go
 
 
@@ -540,6 +596,16 @@ select * from Respuesta where IdPregunta=@IdPregunta and IdRespuesta=@IdRespuest
 end
 
 go
+
+
+Create procedure ListadoRespuestasPorPregunta
+@IdPregunta int
+AS
+Begin
+select * from Respuesta where IdPregunta=@IdPregunta
+end
+go
+
 
 ----------------------------------------
 
